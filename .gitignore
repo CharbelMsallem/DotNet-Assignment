@@ -4,8 +4,6 @@
 
 # --- Database---
 *.db
-*.sqlite
-*.sqlite3
 
 # --- IDE & User Specifics ---
 # VS Code folder
