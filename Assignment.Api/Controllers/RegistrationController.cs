@@ -27,7 +27,7 @@ namespace Assignment.Api.Controllers
                     request.MobileNumber, 
                     request.Email);
 
-                // MOCK: Returning the OTPs in response so you can test immediately
+                // MOCK: Returning the OTPs in response so we can test immediately
                 return Ok(new 
                 { 
                     Message = "Registration Initiated", 
@@ -88,7 +88,13 @@ namespace Assignment.Api.Controllers
         {
             try
             {
-                await _customerService.SetPin(request.MobileNumber, request.Pin, request.ConfirmPin);
+                var success = await _customerService.SetPin(request.MobileNumber, request.Pin, request.ConfirmPin);
+                
+                if (!success) 
+                {
+                    return NotFound(new { Message = "User not found" });
+                }
+
                 return Ok(new { Message = "PIN Set Successfully" });
             }
             catch (Exception ex)
@@ -102,7 +108,14 @@ namespace Assignment.Api.Controllers
         [HttpPost("set-biometric")]
         public async Task<IActionResult> SetBiometric([FromBody] BiometricDto request)
         {
-            await _customerService.SetBiometric(request.MobileNumber, request.Enabled);
+            var success = await _customerService.SetBiometric(request.MobileNumber, request.Enabled);
+            
+            // If service returns false (user not found), return 404
+            if (!success) 
+            {
+                return NotFound(new { Message = "User not found" });
+            }
+
             return Ok(new { Message = "Biometrics Updated" });
         }
     }

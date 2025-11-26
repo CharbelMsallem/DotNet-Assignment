@@ -26,13 +26,12 @@ namespace Assignment.Api.Controllers
                 return NotFound(new { Message = "User not found." });
             }
 
-            // Return the MobileNumber (so the App knows which number to verify next)
-            // and the OTP (for your testing/simulation)
             return Ok(new
             {
                 Message = "Migration Initiated",
                 MobileNumber = customer.MobileNumber,
-                PhoneOtp = customer.PhoneOtp
+                PhoneOtp = customer.PhoneOtp,
+                EmailOtp = customer.EmailOtp
             });
         }
     }
