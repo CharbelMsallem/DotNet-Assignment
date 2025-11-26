@@ -1,5 +1,7 @@
 using Assignment.Data;
 using Microsoft.EntityFrameworkCore;
+using Assignment.Services.Interfaces;
+using Assignment.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,13 +13,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // 3. Register the Database Context
-// CHANGED: UseSqlServer instead of UseSqlite
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// 4. REGISTER CUSTOM SERVICE or REGISTERED SERVICES
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+builder.Services.AddScoped<IRegisteredUserService, RegisteredUserService>();
+
 var app = builder.Build();
 
-// 4. Configure the HTTP request pipeline.
+// 5. Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

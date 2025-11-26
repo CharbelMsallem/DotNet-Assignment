@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Assignment.Api.Dtos
 {
-    // Step 1: Initial Register
+    // Step 1: Initial Register or migrate if user already exist
     public class RegisterRequestDto
     {
         [Required]
@@ -14,6 +14,12 @@ namespace Assignment.Api.Dtos
         [Required]
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
+    }
+
+    public class MigrateRequestDto
+    {
+        [Required]
+        public string ICNumber { get; set; } = string.Empty;
     }
 
     // Step 2 & 3: Verify OTP
