@@ -1,0 +1,28 @@
+# --- Build Output (Crucial) ---
+# Ignore bin and obj folders shown in your screenshot
+[Bb]in/
+[Oo]bj/
+
+# --- Database (Crucial for your project) ---
+# You have 'app.db' in Assignment.Api. Never commit this binary file.
+*.db
+*.sqlite
+*.sqlite3
+
+# --- IDE & User Specifics ---
+# VS Code folder (since you seem to be using VS Code icons)
+.vscode/
+
+# Visual Studio / Rider specific
+.idea/
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# --- OS Generated ---
+.DS_Store
+Thumbs.db
+
+# --- Logging & Temp ---
+*.log

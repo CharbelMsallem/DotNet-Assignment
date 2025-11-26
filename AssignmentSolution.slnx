@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Assignment.Api/Assignment.Api.csproj" />
+  <Project Path="Assignment.Data/Assignment.Data.csproj" />
+  <Project Path="Assignment.Services/Assignment.Services.csproj" />
+</Solution>
